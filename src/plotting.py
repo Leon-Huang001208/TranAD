@@ -3,6 +3,13 @@ from matplotlib.backends.backend_pdf import PdfPages
 import statistics
 import os, torch
 import numpy as np
+import logging
+
+# Set up logging to ignore messages below ERROR level
+logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
+
+# Warning : As of version 2.0.0, you need to add import scienceplots before setting the style (plt.style.use('science')).
+import scienceplots
 
 plt.style.use(['science', 'ieee'])
 plt.rcParams["text.usetex"] = False
