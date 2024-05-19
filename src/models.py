@@ -11,6 +11,12 @@ from src.dlutils import *
 from src.constants import *
 torch.manual_seed(1)
 
+import warnings
+
+# Suppress specific warning
+warnings.filterwarnings("ignore", message="enable_nested_tensor is True, but self.use_nested_tensor is False because")
+
+
 ## Separate LSTM for each variable
 class LSTM_Univariate(nn.Module):
 	def __init__(self, feats):
