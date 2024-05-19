@@ -316,6 +316,7 @@ if __name__ == '__main__':
 		plot_accuracies(accuracy_list, f'{args.model}_{args.dataset}')
 
 	### Testing phase
+	test_start = time()
 	torch.zero_grad = True
 	model.eval()
 	print(f'{color.HEADER}Testing {args.model} on {args.dataset}{color.ENDC}')
@@ -340,7 +341,8 @@ if __name__ == '__main__':
 	result, _ = pot_eval(lossTfinal, lossFinal, labelsFinal)
 	result.update(hit_att(loss, labels))
 	result.update(ndcg(loss, labels))
-	print(df)
+	print(color.BOLD+'Testing time: '+"{:10.4f}".format(time()-test_start)+' s'+color.ENDC)
+	# print(df)
 	pprint(result)
 	# pprint(getresults2(df, result))
 	# beep(4)
